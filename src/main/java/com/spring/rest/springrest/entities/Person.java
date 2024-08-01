@@ -31,5 +31,10 @@ public class Person {
     private String address;
     @Column(name = "PHONE")
     private String phone;
+    @OneToOne
+    private Client client;
+    @OneToOne
+    private User user;
+
 
 }

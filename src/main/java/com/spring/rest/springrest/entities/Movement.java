@@ -12,6 +12,7 @@ import java.util.Objects;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 public class Movement {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,16 +29,4 @@ public class Movement {
     @Column(name = "SALTAMOUNT")
     private BigDecimal saltAmount;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Movement movement = (Movement) o;
-        return Objects.equals(idMovement, movement.idMovement);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(idMovement);
-    }
 }

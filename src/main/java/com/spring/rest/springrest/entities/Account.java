@@ -13,6 +13,7 @@ import java.util.Objects;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 public class Account implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -28,16 +29,5 @@ public class Account implements Serializable {
     @JoinColumn(name = "ACCOUNTNUMBER", referencedColumnName = "ACCOUNTNUMBER")
     private List<Movement> movements;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Account account = (Account) o;
-        return status == account.status && Objects.equals(accountNumber, account.accountNumber) && Objects.equals(typeAccount, account.typeAccount) && Objects.equals(saltIni, account.saltIni) && Objects.equals(movements, account.movements);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(accountNumber, typeAccount, saltIni, status, movements);
-    }
 }

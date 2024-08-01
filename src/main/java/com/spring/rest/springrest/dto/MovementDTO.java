@@ -5,10 +5,7 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 @Builder
 public class MovementDTO {
     private Integer accountNumber;

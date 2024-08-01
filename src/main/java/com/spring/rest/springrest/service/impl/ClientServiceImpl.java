@@ -74,7 +74,6 @@ public class ClientServiceImpl implements ClientService {
         }
     }
     @Override
-
     public Client updateClient(Long clientId, Client client) {
         if (Objects.nonNull(clientCRUDRepository.findByClientId(clientId))) {
             client.setClientId(clientId);

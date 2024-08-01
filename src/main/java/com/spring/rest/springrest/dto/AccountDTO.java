@@ -5,10 +5,6 @@ import java.math.BigDecimal;
 
 
 @Data
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class AccountDTO {
 
     @NotBlank(message = "Account Number is required")
