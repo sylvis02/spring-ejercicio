@@ -4,13 +4,12 @@ package com.spring.rest.springrest.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity
-@Table(name ="T_PERSON")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
+@MappedSuperclass
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,8 +32,6 @@ public class Person {
     private String phone;
     @OneToOne
     private Client client;
-    @OneToOne
-    private User user;
 
 
 }

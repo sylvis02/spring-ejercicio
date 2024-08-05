@@ -52,19 +52,19 @@ public class ClientControllerIntegrationTest {
         assertEquals(201, responseEntity.getStatusCodeValue());
 
         //Obtener un cliente y verificar que retorne 200
-        ResponseEntity<Client> responseGet = clientController.getClientsByIdentify(client.getPerson().getIdentify());
+        ResponseEntity<Client> responseGet = clientController.getClientsByIdentify(client.getIdentify());
         assertEquals(200, responseGet.getStatusCodeValue());
 
         //Crear la cuenta movimiento inicial
         AccountDTO accountDTO = populateCliente.populateAccount();
-        accountDTO.setClientId(responseGet.getBody().getPerson().getId());
+        accountDTO.setClientId(responseGet.getBody().getId());
         ResponseEntity<Void> responseAccount = accountController.createAccount(accountDTO);
         assertEquals(201, responseAccount.getStatusCodeValue());
 
         //CrearMovimientos
         ResponseEntity<List<MovementsDetailDTO>> responseMovements =
                 reportesController.getMovementDetail(new Date(), new Date(),
-                        client.getPerson().getIdentify(), 0, 10);
+                        client.getIdentify(), 0, 10);
 
         //Verificar que hay mas de un movimiento de la primera cuenta que se creo
         assertEquals(200, responseMovements.getStatusCodeValue());

@@ -7,6 +7,8 @@ import java.util.Date;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class MovementDTO {
     private Integer accountNumber;
     private String typeMovement;

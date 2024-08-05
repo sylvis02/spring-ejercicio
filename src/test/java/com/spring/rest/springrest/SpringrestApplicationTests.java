@@ -5,6 +5,8 @@ import com.spring.rest.springrest.datos.PopulateCliente;
 import com.spring.rest.springrest.entities.Client;
 import com.spring.rest.springrest.repository.ClientCRUDRepository;
 import com.spring.rest.springrest.service.impl.ClientServiceImpl;
+
+
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -42,7 +44,7 @@ class SpringrestApplicationTests {
             listClients.add(populateCliente.clientSinGeneracionPersonId());
         }
         for (Client client : listClients) {
-            when(clientCRUDRepository.findByClientId(client.getPerson().getId())).thenReturn(client);
+            when(clientCRUDRepository.findByClientId(client.getId())).thenReturn(client);
 
         }
     }
@@ -51,28 +53,28 @@ class SpringrestApplicationTests {
     void testClient() {
 
         for (Client client : listClients) {
-            Client result = clientServiceImpl.getClient((client.getPerson().getId()));
+            Client result = clientServiceImpl.getClient((client.getId()));
             //Verificar que el resultado no sea nulo
             assertNotNull(result);
             verifyClient(client, result);
 
             //Verificar que el metodo del repositorio se llamo una vez
-            verify(clientCRUDRepository, times(1)).findByClientId((client.getPerson().getId()));
+            verify(clientCRUDRepository, times(1)).findByClientId((client.getId()));
 
         }
 
     }
 
     private void verifyClient(Client expected, Client actual) {
-        assertEquals(expected.getPerson().getNames(), actual.getPerson().getNames());
-        assertEquals(expected.getPerson().getAge(), actual.getPerson().getAge());
-        assertEquals(expected.getPerson().getGender(), actual.getPerson().getGender());
-        assertEquals(expected.getPerson().getAddress(), actual.getPerson().getAddress());
-        assertEquals(expected.getPerson().getPhone(), actual.getPerson().getPhone());
+        assertEquals(expected.getNames(), actual.getNames());
+        assertEquals(expected.getAge(), actual.getAge());
+        assertEquals(expected.getGender(), actual.getGender());
+        assertEquals(expected.getAddress(), actual.getAddress());
+        assertEquals(expected.getPhone(), actual.getPhone());
         assertEquals(expected.getPassword(), actual.getPassword());
         assertEquals(expected.getStatus(), actual.getStatus());
-        assertEquals(expected.getPerson().getIdentify(), actual.getPerson().getIdentify());
-        assertEquals(expected.getPerson().getTypeIdentify(), actual.getPerson().getTypeIdentify());
+        assertEquals(expected.getIdentify(), actual.getIdentify());
+        assertEquals(expected.getTypeIdentify(), actual.getTypeIdentify());
     }
 
 

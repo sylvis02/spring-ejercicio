@@ -35,8 +35,8 @@ public class ClientServiceImpl implements ClientService {
     @Transactional
     @Override
     public void saveClient(Client client) {
-        Person person = personCRUDRepository.save(client.getPerson());
-        client.setClientId(person.getId());
+        //Person person = personCRUDRepository.save(client.getPerson());
+        //client.setClientId(person.getId());
         clientCRUDRepository.save(client);
     }
     @Override
@@ -77,7 +77,7 @@ public class ClientServiceImpl implements ClientService {
     public Client updateClient(Long clientId, Client client) {
         if (Objects.nonNull(clientCRUDRepository.findByClientId(clientId))) {
             client.setClientId(clientId);
-            client.getPerson().setId(clientId);
+          //  client.getPerson().setId(clientId);
             return clientCRUDRepository.save(client);
         } else {
             throw new AppException(404, "Client not found");

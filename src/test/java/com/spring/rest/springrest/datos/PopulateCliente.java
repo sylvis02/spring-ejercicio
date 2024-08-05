@@ -15,34 +15,34 @@ public class PopulateCliente {
     private Faker faker = new Faker();
 
     public Client getCliente() {
-        Person persona = new Person();
-
-        persona.setTypeIdentify(faker.options().option("C", "R"));
-        persona.setIdentify(faker.idNumber().valid());
-        persona.setNames(faker.name().fullName());
-        persona.setAge(faker.number().numberBetween(18, 80));
-        persona.setGender(faker.options().option("M", "F"));
-        persona.setAddress(faker.address().fullAddress());
-        persona.setPhone(faker.phoneNumber().cellPhone());
+        //Person persona = new Person();
         Client cliente = new Client();
-        cliente.setPerson(persona);
+        cliente.setTypeIdentify(faker.options().option("C", "R"));
+        cliente.setIdentify(faker.idNumber().valid());
+        cliente.setNames(faker.name().fullName());
+        cliente.setAge(faker.number().numberBetween(18, 80));
+        cliente.setGender(faker.options().option("M", "F"));
+        cliente.setAddress(faker.address().fullAddress());
+        cliente.setPhone(faker.phoneNumber().cellPhone());
+
+        //cliente.setPerson(persona);
         cliente.setPassword(faker.internet().password());
         cliente.setStatus(1);
         return cliente;
     }
     public Client clientSinGeneracionPersonId() {
         BigDecimal id = new BigDecimal(-10000);
-        Person persona = new Person();
-        persona.setId(faker.number().randomNumber());
-        persona.setTypeIdentify(faker.options().option("C", "R"));
-        persona.setIdentify(faker.idNumber().valid());
-        persona.setNames(faker.name().fullName());
-        persona.setAge(faker.number().numberBetween(18, 80));
-        persona.setGender(faker.options().option("M", "F"));
-        persona.setAddress(faker.address().fullAddress());
-        persona.setPhone(faker.phoneNumber().cellPhone());
         Client cliente = new Client();
-        cliente.setPerson(persona);
+        cliente.setId(faker.number().randomNumber());
+        cliente.setTypeIdentify(faker.options().option("C", "R"));
+        cliente.setIdentify(faker.idNumber().valid());
+        cliente.setNames(faker.name().fullName());
+        cliente.setAge(faker.number().numberBetween(18, 80));
+        cliente.setGender(faker.options().option("M", "F"));
+        cliente.setAddress(faker.address().fullAddress());
+        cliente.setPhone(faker.phoneNumber().cellPhone());
+
+        //cliente.setPerson(persona);
         cliente.setPassword(faker.internet().password());
         cliente.setStatus(1);
         return cliente;
