@@ -12,7 +12,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class Client extends Person {
-    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "CLIENTID")
     private Long clientId;
     @Column(name = "PASSWORD")

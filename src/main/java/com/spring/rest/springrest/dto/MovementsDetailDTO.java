@@ -7,7 +7,10 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class MovementsDetailDTO {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 

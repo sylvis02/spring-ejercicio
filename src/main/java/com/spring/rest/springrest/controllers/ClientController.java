@@ -25,10 +25,7 @@ public class ClientController {
     public ResponseEntity<Client> getClients(@PathVariable("clientId") Long clientId){
         return new ResponseEntity<Client>(clientServiceImpl.getClient(clientId), HttpStatus.OK);
     }
-    @GetMapping("identify/{identify}")
-    public ResponseEntity<Client> getClientsByIdentify(@PathVariable("identify") String identify){
-        return new ResponseEntity<Client>(clientServiceImpl.getClientByIdentify(identify), HttpStatus.OK);
-    }
+
     @PostMapping(consumes = "application/json", produces = "application/json")
     public ResponseEntity<Void> createClient(@RequestBody Client client){
         clientServiceImpl.saveClient(client);

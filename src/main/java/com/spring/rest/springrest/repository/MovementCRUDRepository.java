@@ -12,8 +12,9 @@ import java.util.List;
 import java.util.Optional;
 @Repository
 public interface MovementCRUDRepository extends JpaRepository<Movement, Long> {
-    @Query("SELECT new com.spring.rest.springrest.dto.MovementsDetailDTO(m.dateFrom, " +
-            "      p.names, " +
+    @Query("SELECT new com.spring.rest.springrest.dto.MovementsDetailDTO(" +
+            "      m.dateFrom, " +
+            "      cl.names, " +
             "      m.accountNumber, " +
             "      acc.typeAccount, " +
             "      acc.saltIni, " +
@@ -24,8 +25,7 @@ public interface MovementCRUDRepository extends JpaRepository<Movement, Long> {
             "INNER JOIN Account acc ON m.accountNumber = acc.accountNumber " +
             "INNER JOIN CliCta c ON c.accountNumber = m.accountNumber " +
             "INNER JOIN Client cl ON c.clientId = cl.clientId " +
-            "INNER JOIN Person p ON cl.clientId = p.id " +
-            "WHERE (:identify IS NULL OR p.identify = :identify) " +
+            "WHERE (:identify IS NULL OR cl.identify = :identify) " +
             "AND m.dateFrom >= :fechaIni " +
             "AND m.dateFrom <= :fechaFin")
     public List<MovementsDetailDTO> findReportMapperByIdentifyFechaIni(Pageable pageable,

@@ -7,8 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ClientCRUDRepository extends JpaRepository<Client, Long> {
 
-    public Client findByClientId(Long clientId);
+    Client findByClientId(Long clientId);
 
-    public Client findByPersonIdentify(String identify);
 
 }
